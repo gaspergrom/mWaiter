@@ -1,0 +1,18 @@
+<ion-header>
+
+    <ion-navbar color="primary">
+        <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title>All food</ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+    <ion-searchbar [(ngModel)]="search"></ion-searchbar>
+    <ion-list>
+        <button ion-item *ngFor="let food of foods | tables:search" (click)="select(food.id, food.name)">{{food.name}}</button>
+    </ion-list>
+</ion-content>

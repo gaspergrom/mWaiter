@@ -1,14 +1,30 @@
-import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import {Component, OnInit} from '@angular/core';
+import {NavController} from 'ionic-angular';
+import {DataService} from "../../app/services/data";
+import {TablePage} from "../table/table";
 
 @Component({
-  selector: 'page-home',
-  templateUrl: 'home.html'
+    selector: 'page-home',
+    templateUrl: 'home.html'
 })
-export class HomePage {
+export class HomePage implements OnInit {
+    tables=[];
+    search = "";
 
-  constructor(public navCtrl: NavController) {
+    ngOnInit(): void {
+        this.data.init();
+    }
 
-  }
-
+    constructor(public navCtrl: NavController, private data: DataService) {
+        let self=this;
+        this.data.tablesEmit.subscribe(
+            res=> {
+                self.tables=res;
+            }
+        )
+    }
+    
+    find(id, name){
+        this.navCtrl.push(TablePage, {id, name});
+    }
 }

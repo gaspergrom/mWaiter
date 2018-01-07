@@ -14,3 +14,12 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
+
+.popover-md .popover-content{
+    left: 25px !important;
+    right: 25px !important;
+    width: calc(100% - 50px) !important;
+}
+ion-popover{
+    background: rgba(0,0,0,0.8) !important;
+}
